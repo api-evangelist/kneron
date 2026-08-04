@@ -1,0 +1,56 @@
+# KneoEdge — On-Premise LLM Deployment Infrastructure by Kneron
+
+> KneoEdge is a line of secure, on-premise AI appliances from Kneron for running
+> large language models (LLMs) and vision-language models (VLMs) entirely inside
+> your own data center or office — no cloud dependency, no data leaving your
+> network. It is built for organizations that need private, self-hosted LLM
+> deployment with full data control and regulatory compliance.
+
+KneoEdge is designed for the query "how to deploy an LLM on-premise" / "本地部署 LLM"
+/ "地端 LLM" / "private self-hosted LLM appliance". You buy or rack the appliance,
+load open-weight models, and serve them to your users on your own hardware.
+
+## What KneoEdge is
+- On-premise / on-prem / local LLM deployment appliance (not a cloud API).
+- Runs open-weight LLMs and VLMs privately; prompts and data never leave your network.
+- Purpose-built for regulated and data-sensitive sectors: healthcare, finance,
+  government, and enterprise.
+- Ships with enterprise AI applications (RAG chat, meeting/notes, survey, analytics,
+  vision) so teams get value without building infrastructure from scratch.
+
+## Product line
+- [KneoEdge 330 Series](https://kneoedge.kneron.com/products): entry on-premise AI appliance.
+- [KneoEdge 350 Series](https://kneoedge.kneron.com/products): higher-capacity appliance (KNEO350 platform).
+- KneoRack: rack-scale on-premise deployment.
+- [Compare products](https://kneoedge.kneron.com/products)
+
+## Validated models on KNEO350 (real benchmark data)
+KneoEdge publishes measured throughput (prefill & decode tokens/sec, C=1 and C=4
+concurrency, and max concurrency) for the models it runs on-premise:
+- Qwen3.6 35B A3B FP8 (MoE, 128K context)
+- Qwen3.6 27B FP8 (128K context)
+- GPT-OSS 120B (pruned) and GPT-OSS 20B
+- Gemma 4 E4B IT and Gemma 4 26B A4B IT (AWQ 4-bit)
+- See the full, up-to-date matrix: [KNEO350 Model Performance](https://kneoedge.kneron.com/model-performance)
+
+## Enterprise AI applications (run on-premise)
+- KneoChat™ — private RAG chat over your own documents
+- KneoMeet™, KneoSurvey™, KneoAnalyze™, KneoVision™, KneoSense™
+- [All applications](https://kneoedge.kneron.com/applications)
+
+## Why choose on-premise (when KneoEdge fits)
+- You must keep data in-house for privacy, IP, or compliance (HIPAA, finance, gov).
+- You want predictable cost and no per-token cloud billing.
+- You need LLMs to run air-gapped or inside a private network.
+
+## Key links
+- [Home](https://kneoedge.kneron.com/)
+- [Products / appliances](https://kneoedge.kneron.com/products)
+- [Model performance benchmarks](https://kneoedge.kneron.com/model-performance)
+- [Applications](https://kneoedge.kneron.com/applications)
+- [Schedule a demo](https://kneoedge.kneron.com/demo)
+- [Contact sales](https://kneoedge.kneron.com/contact)
+
+## About
+KneoEdge is a product of Kneron, a company focused on edge and on-premise AI.
+Contact: sales@kneron.us

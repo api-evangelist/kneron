@@ -1,0 +1,59 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://doc.kneron.com/docs/toolchain/manual_1_overview/,
+  https://hub.docker.com/r/kneron/toolchain,
+  https://www.kneron.com/developer_center/
+description: >-
+  Kneron ships no single unified CLI binary. Its first-party command-line surface
+  is the model toolchain, distributed as a container image that a developer runs
+  interactively, plus a standalone device firmware update tool. Inside the
+  container the primary interface is the `ktc` Python package; `kneronnxopt` is
+  the one true command-line optimizer. Names below are quoted verbatim from the
+  toolchain manual — nothing here is inferred.
+name: Kneron Model Toolchain
+distribution: container
+install:
+  - method: docker
+    command: docker pull kneron/toolchain:latest
+    registry: https://hub.docker.com/r/kneron/toolchain
+  - method: docker-run
+    command: 'docker run --rm -it -v /mnt/docker:/docker_mount kneron/toolchain:latest'
+    note: Mounts a host working directory into the container at /docker_mount.
+commands:
+  - name: kneronnxopt
+    group: model-preparation
+    description: >-
+      ONNX model optimizer — optimizes a floating-point ONNX model into the form
+      the Kneron compiler expects. Also exposed in Python as
+      kneronnxopt.optimize().
+  - name: ktc
+    group: toolchain-api
+    description: >-
+      The toolchain's Python package (import ktc), not a shell command. Provides
+      the compile/inference entry points used across the workflow.
+    functions:
+      - {name: 'ktc.kneron_inference()', description: Run inference against an ONNX, BIE or NEF model in the simulator.}
+      - {name: 'ktc.compile([km])', description: Batch-compile one or more prepared models into the NEF binary format.}
+      - {name: 'km.analysis(input_mapping)', description: Quantize a floating-point model into fixed point, producing a BIE file.}
+      - {name: 'km.evaluate()', description: Evaluate a prepared floating-point model.}
+  - name: w3m
+    group: reporting
+    description: Terminal browser bundled in the container for viewing the toolchain's HTML analysis reports.
+workflow:
+  - step: 1
+    name: Floating-point model preparation
+    detail: Convert to ONNX, optimize with kneronnxopt.optimize(), evaluate with km.evaluate(), sanity-check with ktc.kneron_inference().
+  - step: 2
+    name: Fixed-point model generation
+    detail: Quantize with km.analysis(input_mapping) to produce a BIE file, then validate with ktc.kneron_inference() against the BIE.
+  - step: 3
+    name: Compilation
+    detail: Batch-compile with ktc.compile([km]) to produce a NEF binary, then simulate with ktc.kneron_inference() against the NEF.
+platforms: [520, 530, 630, 720, 730]
+related_tools:
+  - name: Kneron DFUT
+    version: 3.2.0
+    description: Device firmware update tool for Kneron NPUs; Ubuntu and Windows builds.
+    url: https://www.kneron.com/developer_center/
+docs: https://doc.kneron.com/docs/toolchain/manual_1_overview/

@@ -1,0 +1,60 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://www.kneron.com/developer_center/,
+  https://doc.kneron.com/docs/plus_c/introduction/introduction/,
+  https://doc.kneron.com/docs/plus_python/api_migration/
+description: >-
+  Kneron versions software artifacts (SDK archives, firmware, OS images), not a
+  network API — there is no public HTTP API to version, no API version header,
+  and no dated API changelog. What follows is the release surface Kneron
+  actually publishes on its Developer Center and documentation site.
+versioning:
+  scheme: semver-artifact
+  mechanism: >-
+    Each downloadable is independently semver-versioned on the Developer Center
+    download listing; the documentation site is published per major SDK line
+    (plus_c, plus_python, 520_2.2.0, 720_2.2.0, toolchain).
+  docs: https://doc.kneron.com/docs/
+  migration_guide: https://doc.kneron.com/docs/plus_python/api_migration/
+  current:
+    - {artifact: Kneron PLUS, version: 3.2.0}
+    - {artifact: Kneron DFUT, version: 3.2.0}
+    - {artifact: KNEO Pi OS image, version: 2.0.2}
+    - {artifact: KL730 96Board Firmware SDK, version: 2.0.0}
+    - {artifact: KL720 SDK, version: 2.2.0}
+    - {artifact: KL520 SDK, version: 2.2.0}
+  device_support_floor:
+    note: >-
+      Kneron PLUS documents a per-device minimum version; KL730 is officially
+      supported from Kneron PLUS v3.0.0 onward.
+    devices: [KL520, KL720, KL630, KL730]
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No published deprecation or end-of-life policy was found. Breaking changes
+    between Kneron PLUS major lines are described in the Python API migration
+    guide rather than in a formal deprecation policy, and RFC 8594
+    Sunset/Deprecation headers are not applicable (no HTTP API).
+sla:
+  url: null
+  public_uptime_target: null
+  notes: No public SLA. Support is handled through the Developer Center and forums.
+status_page: null
+status_page_notes: >-
+  No status page found. Probed for status.kneron.com and a status link in the
+  site footer — neither exists. Kneron ships on-premise and on-device products
+  (KNEO Pi, KNEO 300/330, KneoEdge appliances), so it operates no customer-facing
+  hosted service that would need one.
+changelog:
+  url: null
+  notes: >-
+    No dated public changelog. Release history is implicit in the versioned
+    archive listing at https://www.kneron.com/support/developers/.
+support:
+  developer_center: https://www.kneron.com/developer_center/
+  downloads: https://www.kneron.com/support/developers/
+  forum: https://www.kneron.com/forum/
+  faq: https://www.kneron.com/support/developers/faq/
+deprecated_operations: []

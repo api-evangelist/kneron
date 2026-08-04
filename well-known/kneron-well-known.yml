@@ -1,0 +1,50 @@
+generated: '2026-08-04'
+method: probed
+source: live HTTP probes of every Kneron web host
+description: >-
+  Kneron publishes no /.well-known/ discovery surface. Every canonical path was
+  probed on all four Kneron web hosts on the fetch date and none returned a real
+  document. Note the false-positive trap: kneoedge.kneron.com is a single-page
+  application whose catch-all route answers HTTP 200 with the SPA HTML shell for
+  every unknown path — including every /.well-known/* path — so those 200s are
+  recorded as `spa-shell` and are NOT discovery documents. No WellKnown or
+  SecurityTxt pointer is wired in apis.yml because nothing was actually found.
+hosts:
+  - host: https://www.kneron.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://doc.kneron.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://kneo.kneron.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+  - host: https://kneoedge.kneron.com
+    note: >-
+      SPA catch-all — returns 200 text/html (the KneoEdge marketing shell) for
+      every path. Treated as a miss, not a hit.
+    documents:
+      - {path: /.well-known/security.txt, status: 200, result: spa-shell, content_type: text/html}
+      - {path: /.well-known/openid-configuration, status: 200, result: spa-shell, content_type: text/html}
+      - {path: /.well-known/oauth-authorization-server, status: 200, result: spa-shell, content_type: text/html}
+      - {path: /.well-known/oauth-protected-resource, status: 200, result: spa-shell, content_type: text/html}
+      - {path: /.well-known/agent-card.json, status: 200, result: spa-shell, content_type: text/html}
+      - {path: /.well-known/agent.json, status: 200, result: spa-shell, content_type: text/html}
+found: []

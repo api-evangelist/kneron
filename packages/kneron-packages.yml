@@ -1,0 +1,89 @@
+generated: '2026-08-04'
+method: searched
+source: >-
+  https://www.kneron.com/developer_center/, https://doc.kneron.com/docs/,
+  https://github.com/kneron, https://hub.docker.com/u/kneron
+description: >-
+  First-party Kneron developer libraries and toolchain distributions. Kneron is an
+  edge-AI silicon company: its client libraries are on-device inference SDKs (C /
+  C++ / Python) and model-compilation toolchains, not HTTP API client libraries.
+  None of them are published to npm, PyPI, Maven Central, NuGet, RubyGems,
+  Packagist or crates.io — the registry probes below all returned 404. The real
+  first-party distribution channels are (a) versioned archives behind the Kneron
+  Developer Center download listing (registration required for some assets),
+  (b) the github.com/kneron organization, and (c) Docker Hub for the model
+  toolchain. Versions recorded are those listed on the Developer Center on the
+  fetch date.
+packages:
+  - language: c
+    registry: vendor-download
+    name: Kneron PLUS
+    version: 3.2.0
+    url: https://www.kneron.com/developer_center/
+    docs: https://doc.kneron.com/docs/plus_c/introduction/introduction/
+    official: true
+    note: >-
+      Kneron PLUS (KP API) — the C/C++ inference library for the KL520, KL720,
+      KL630 and KL730 NPUs. Distributed as a versioned archive from the Kneron
+      Developer Center, not a package registry.
+  - language: python
+    registry: vendor-download
+    name: Kneron PLUS (Python)
+    version: 3.2.0
+    url: https://www.kneron.com/developer_center/
+    docs: https://doc.kneron.com/docs/plus_python/api_document/
+    official: true
+    note: >-
+      Python binding of the KP API, shipped inside the same Kneron PLUS archive.
+      Not published to PyPI (pypi.org/pypi/kneron, kneron-plus, ktc all 404).
+  - language: python
+    registry: github
+    name: host_lib
+    url: https://github.com/kneron/host_lib
+    official: true
+    note: Python host-side examples and library for the Kneron USB dongle.
+  - language: python
+    registry: github
+    name: ONNX_Convertor
+    url: https://github.com/kneron/ONNX_Convertor
+    official: true
+    note: >-
+      ONNX converter and optimizer scripts that prepare models for Kneron
+      hardware; the model-toolchain front end.
+  - language: python
+    registry: github
+    name: Model_Zoo
+    url: https://github.com/kneron/Model_Zoo
+    official: true
+    note: Pre-optimized reference models for Kneron NPUs.
+  - language: container
+    registry: docker-hub
+    name: kneron/toolchain
+    url: https://hub.docker.com/r/kneron/toolchain
+    install: docker pull kneron/toolchain
+    official: true
+    note: >-
+      The Kneron model toolchain (KDP toolchain) container — ONNX converter,
+      compiler, quantizer, evaluator and simulator. The primary distribution of
+      the toolchain CLI.
+  - language: container
+    registry: docker-hub
+    name: kneron/edge_ai_sdk
+    url: https://hub.docker.com/r/kneron/edge_ai_sdk
+    install: docker pull kneron/edge_ai_sdk
+    official: true
+    note: Kneron Edge AI SDK release container.
+  - language: c
+    registry: vendor-download
+    name: Kneron DFUT
+    version: 3.2.0
+    url: https://www.kneron.com/developer_center/
+    official: true
+    note: >-
+      Device firmware update tool for Kneron NPUs; Ubuntu and Windows builds
+      published on the Developer Center.
+registries_probed:
+  - {registry: pypi, queries: [kneron, kneron-plus, kneronplus, ktc], result: none, status: 404}
+  - {registry: npm, queries: [kneron, "@kneron/sdk", kneo], result: none, status: 404}
+  - {registry: docker-hub, queries: [kneron], result: 4 repositories, status: 200}
+  - {registry: github, queries: [kneron], result: 14 public repositories, status: 200}

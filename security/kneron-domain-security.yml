@@ -1,0 +1,38 @@
+generated: '2026-08-04'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.kneron.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Nov 18 23:59:59 2026 GMT
+  hsts: false
+- host: doc.kneron.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Jan 31 23:59:59 2027 GMT
+  hsts: false
+- host: kneo.kneron.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 21 23:59:59 2027 GMT
+  hsts: false
+- host: kneoedge.kneron.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 31 23:59:59 2027 GMT
+  hsts: false
+domains:
+- domain: kneron.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: true
+  dmarc_policy: none
+  dmarc_record: 'v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com'
+  notes: >-
+    No SPF record on kneron.com (only a site-verification TXT and a Brevo
+    verification code). No CAA. No DNSSEC. DMARC is published but at p=none
+    (monitor only). No host sends HSTS; www.kneron.com and doc.kneron.com
+    negotiate TLS 1.2 only, while kneo.kneron.com and kneoedge.kneron.com
+    negotiate TLS 1.3.
